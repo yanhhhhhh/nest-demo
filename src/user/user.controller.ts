@@ -23,18 +23,30 @@ export class UserController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
-
+  /**
+   *  http://localhost:3000/v1/user
+   * @returns
+   */
   @Get()
   findAll() {
     return this.userService.findAll();
   }
-
-  @Get(':id')
+  /**
+   * http://localhost:3000/v2/user/2222
+   * @param id
+   * @returns
+   */
   @Version('2')
+  @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
-
+  /**
+   *  http://localhost:3000/v1/user/1
+   * @param id
+   * @param updateUserDto
+   * @returns
+   */
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(+id, updateUserDto);
