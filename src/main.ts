@@ -10,6 +10,12 @@ async function bootstrap() {
   app.useStaticAssets('public', {
     prefix: '/static',
   });
+  // 全局中间件
+  app.use((req, res, next) => {
+    console.log('before', req.url);
+    next();
+    console.log('after', req.url);
+  });
   await app.listen(3000);
 }
 bootstrap();
