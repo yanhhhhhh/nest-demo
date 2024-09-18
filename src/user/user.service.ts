@@ -25,4 +25,8 @@ export class UserService {
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
+
+  getHello(): string {
+    return 'User Hello World!';
+  }
 }

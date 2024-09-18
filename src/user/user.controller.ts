@@ -7,10 +7,13 @@ import {
   Param,
   Delete,
   Version,
+  UploadedFiles,
+  UseInterceptors,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { AnyFilesInterceptor } from '@nestjs/platform-express';
 
 @Controller({
   path: 'user',
@@ -55,5 +58,19 @@ export class UserController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
+  }
+  @Post('upload')
+  @UseInterceptors(
+    AnyFilesInterceptor({
+      dest: 'uploads/',
+    }),
+  )
+  postFile(
+    @Body() createUserDto: CreateUserDto,
+    @UploadedFiles() files: Array<Express.Multer.File>,
+  ) {
+    console.log(files);
+
+    return `file upload success ${JSON.stringify(createUserDto)} `;
   }
 }
