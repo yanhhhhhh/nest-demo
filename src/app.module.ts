@@ -4,9 +4,11 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { LogMiddleware } from './log.middleware';
 import { ProductModule } from './product/product.module';
+import { AaaModule } from './aaa/aaa.module';
+import { BbbModule } from './bbb/bbb.module';
 
 @Module({
-  imports: [UserModule, ProductModule],
+  imports: [UserModule, ProductModule, AaaModule, BbbModule],
   controllers: [AppController],
   providers: [AppService],
 })
