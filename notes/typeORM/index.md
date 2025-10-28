@@ -202,3 +202,70 @@ AppDataSource.initialize()
     comments: Comment[];
   }
   ```
+
+  ### 多对多关系
+
+#### 装饰器：@ManyToMany、@JoinTable
+
+> 案例 typeorm-relation-mapping3
+
+- Article 和 Tag 实体之间的多对多关系
+- Article 实体包含多个 Tag 实体的引用，并通过 @JoinTable 装饰器指定关联表
+
+  ```ts
+  import { Tag } from './Tag';
+  import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    ManyToMany,
+    JoinTable,
+  } from 'typeorm';
+
+  @Entity()
+  export class Article {
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column()
+    title: string;
+
+    @Column()
+    content: string;
+
+    @ManyToMany(() => Tag, (tag) => tag.articles, {
+      cascade: true, // 启用级联操作，允许在保存文章时自动保存关联的标签实体
+    })
+    @JoinTable()
+    tags: Tag[];
+  }
+  ```
+
+- Tag 实体包含多个 Article 实体的引用
+
+  ```ts
+  import { Article } from './Article';
+  import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+  @Entity()
+  export class Tag {
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column()
+    name: string;
+
+    @ManyToMany(() => Article, (article) => article.tags)
+    articles: Article[];
+  }
+  ```
+
+- 使用 AppDataSource.getRepository(Article).save(Article) 方法保存 Article 实体时，会自动保存关联的 Tag 实体
+- 使用 AppDataSource.getRepository(Article).findOne 方法查询 Article 实体时，可以通过 relations 参数加载关联的 Tag 实体
+
+  ```ts
+  const articles = await AppDataSource.manager.find(Article, {
+    relations: {
+      tags: true,
+    },
+  });
+  ```
