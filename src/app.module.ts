@@ -6,9 +6,10 @@ import { LogMiddleware } from './log.middleware';
 import { ProductModule } from './product/product.module';
 import { AaaModule } from './aaa/aaa.module';
 import { BbbModule } from './bbb/bbb.module';
+import { MetadataModule } from './metadata/metadata.module';
 
 @Module({
-  imports: [UserModule, ProductModule, AaaModule, BbbModule],
+  imports: [UserModule, ProductModule, AaaModule, BbbModule, MetadataModule],
   controllers: [AppController],
   providers: [AppService],
 })
