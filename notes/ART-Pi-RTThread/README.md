@@ -2,6 +2,8 @@
 
 This guide provides comprehensive documentation for using the ART-Pi development board with RT-Thread Studio, focusing on I2C interface configuration and VL53L1X-v2 Time-of-Flight (ToF) distance sensor integration.
 
+> 📖 **New to this guide?** Check out the [INDEX](./INDEX.md) for a complete overview of all available documentation and quick-start paths.
+
 ## Table of Contents
 
 1. [ART-Pi Board Overview](#art-pi-board-overview)
