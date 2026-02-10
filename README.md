@@ -38,6 +38,13 @@ $ pnpm run test:cov
 
 ## Doc
 
+### ART-Pi RT-Thread (Embedded)
+
+- [ART-Pi I2C & VL53L1X-v2 Guide](./notes/ART-Pi-RTThread/README.md) - Complete guide for using ART-Pi with I2C and VL53L1X-v2 ToF sensor
+- [I2C Quick Reference](./notes/ART-Pi-RTThread/i2c-quick-reference.md) - Quick reference for I2C configuration
+- [VL53L1X Example Code](./notes/ART-Pi-RTThread/vl53l1x-example.md) - Detailed driver implementation
+- [Example Project](./examples/art-pi-vl53l1x/) - Complete working example
+
 ### 中间件
 
 - [doc](https://docs.nestjs.com/middleware)
