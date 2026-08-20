@@ -1,6 +1,6 @@
 # NestJS
 
-> 记录学习nestjs
+> 记录学习nestjs ,学习案例在文件夹 `learn-example` 中
 
 ## Installation
 
@@ -36,16 +36,14 @@ $ pnpm run test:cov
 
 ## 生命周期
 
-![1745292465459](image/README/1745292465459.png)
+![1745292465459](./image/README/1745292465459.png)
 
 ## Doc
 
 ### 中间件
 
 - [doc](https://docs.nestjs.com/middleware)
-- [note](./notes/中间件/index.md)
-- [Middleware](./src/middleware)
-- [LoggerMiddleware](./src/middleware/logger.middleware.ts)
+- [note](./中间件/index.md)
 
 ### 装饰器
 
@@ -55,19 +53,19 @@ $ pnpm run test:cov
 
 声明controller
 
-![1745291388293](image/README/1745291388293.png)
+![1745291388293](./image/README/1745291388293.png)
 
 #### @Injectable
 
 声明provider：
 
-- 这个provider 可以是任何的class![1745300351807](image/README/1745300351807.png)
+- 这个provider 可以是任何的class![1745300351807](./image/README/1745300351807.png)
 - 注入方式：
 
   - 构造器注入
   - 属性注入
 
-    ![1745300488222](image/README/1745300488222.png)
+    ![1745300488222](./image/README/1745300488222.png)
 
 #### Nest 全部的装饰器
 
@@ -103,11 +101,11 @@ $ pnpm run test:cov
 
 在guard 中使用reflector 来去metadata
 
-![1745304645990](image/README/1745304645990.png)
+![1745304645990](./image/README/1745304645990.png)
 
-![1745304625816](image/README/1745304625816.png)
+![1745304625816](./image/README/1745304625816.png)
 
-![1745304684113](image/README/1745304684113.png)
+![1745304684113](./image/README/1745304684113.png)
 
 ##### 属性装饰器
 
@@ -117,13 +115,13 @@ $ pnpm run test:cov
 
 > 使用 `applyDecorators` 可以组合多个装饰器
 
-![1745302787752](image/README/1745302787752.png)
+![1745302787752](./image/README/1745302787752.png)
 
 ## Question
 
 ### Module 和Provider 的循环依赖怎么处理？
 
-![1745291033559](image/README/1745291033559.png)
+![1745291033559](./image/README/1745291033559.png)
 
     Module 之间可以相互imports，Provider 之间可以相互注入，会形成循环依赖，解决方案是**使用forwardRed** 包裹
 
